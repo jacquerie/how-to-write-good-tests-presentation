@@ -1,0 +1,132 @@
+\documentclass[10pt]{beamer}
+
+\usepackage{amssymb}
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{minted}
+
+\usetheme{Copenhagen}
+\setbeamertemplate{navigation symbols}{}
+
+\title{How To Write Good Tests}
+\author{
+  Jacopo Notarstefano,\\
+  \texttt{jacopo.notarstefano [at] cern.ch}
+}
+\date{May 16, 2017}
+
+\begin{document}
+  \begin{frame}[plain]
+    \titlepage{}
+  \end{frame}
+
+  \begin{frame}{Google Testing On The Toilet}
+    Google is a fairly successful company in the software world. If you haven't
+    heard of them, you should probably google their name.
+
+    \vspace{0.25cm}
+
+    They have an interesting engineering practice:
+
+    \vspace{0.25cm}
+
+    \begin{block}{}
+      ``We write flyers about everything from dependency injection to code
+      coverage, and then regularly plaster the bathrooms all over Google with
+      each episode, almost 500 stalls worldwide.''
+    \end{block}
+
+    \vspace{0.5cm}
+
+    \url{https://testing.googleblog.com/2007/01/introducing-testing-on-toilet.html}
+  \end{frame}
+
+  \begin{frame}{Why Should I Write Tests?}
+    Unlike the code that we write for ourselves or for a school assignment, code
+    that we write for INSPIRE is going to be refactored, fixed or expanded.
+
+    \vspace{0.5cm}
+
+    By writing tests we can ensure that the next programmer that will touch our
+    code will be able to build on top of our understanding of the problem.
+
+    \vspace{0.5cm}
+
+    In order for this to happen, our tests should be \emph{good}. Let's see
+    what this means.
+  \end{frame}
+
+  \begin{frame}{What Is A Good Test?}
+    A good test maximizes three qualities:
+
+    \vspace{0.25cm}
+
+    \begin{itemize}
+      \item \textbf{Fidelity}: sensitivity to defects in the code under test.
+      \item \textbf{Resilience}: indifference to non-breaking changes.
+      \item \textbf{Precision}.
+    \end{itemize}
+
+    \vspace{0.5cm}
+
+    \url{https://testing.googleblog.com/2014/05/testing-on-toilet-effective-testing.html}
+  \end{frame}
+
+  \begin{frame}{Test Behavior, Not Implementation}
+    \url{https://testing.googleblog.com/2013/08/testing-on-toilet-test-behavior-not.html}
+  \end{frame}
+
+  \begin{frame}{Prefer Testing Public APIs}
+    \url{https://testing.googleblog.com/2015/01/testing-on-toilet-prefer-testing-public.html}
+  \end{frame}
+
+  \begin{frame}{An Example}
+    How would you test this sorting algorithm?
+
+    \vspace{0.25cm}
+
+    \inputminted[fontsize=\scriptsize]{python}{tex/src/selection.py}
+  \end{frame}
+
+  \begin{frame}{Change-Detector Tests Considered Harmful}
+    \url{https://testing.googleblog.com/2015/01/testing-on-toilet-change-detector-tests.html}
+  \end{frame}
+
+  \begin{frame}{Test Behaviors, Not Methods}
+    \url{https://testing.googleblog.com/2014/04/testing-on-toilet-test-behaviors-not.html}
+  \end{frame}
+
+  \begin{frame}{Naming Unit Tests Responsibly}
+    \url{https://testing.googleblog.com/2007/02/tott-naming-unit-tests-responsibly.html}
+  \end{frame}
+
+  \begin{frame}{Too Many Tests}
+    \url{https://testing.googleblog.com/2008/02/in-movie-amadeus-austrian-emperor.html}
+  \end{frame}
+
+  \begin{frame}{Understanding Your Coverage Data}
+    \url{https://testing.googleblog.com/2008/03/tott-understanding-your-coverage-data.html}
+  \end{frame}
+
+  \begin{frame}{Test Sizes}
+    Tests come in different sizes:
+
+    \vspace{0.25cm}
+
+    \begin{table}[H]
+      \begin{tabular}{llll}
+        \textbf{Feature} & \textbf{Small} & \textbf{Medium} & \textbf{Large} \\
+        \hline
+        Database & \(\times\) & \checkmark & \checkmark \\
+        Network Access & \(\times\) & \texttt{localhost} & \checkmark \\
+        \ldots & \ldots & \ldots & \ldots \\
+        File System & \texttt{idempotent} & \checkmark & \checkmark \\
+        \hline
+      \end{tabular}
+    \end{table}
+
+    \vspace{0.5cm}
+
+    \url{https://testing.googleblog.com/2010/12/test-sizes.html}
+  \end{frame}
+\end{document}
